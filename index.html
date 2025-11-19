@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIJP YEAR-END PARTY - GOLDEN 10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 背景: 雪のエフェクト -->
+    <div id="snow-container"></div>
+    <div class="vignette"></div>
+
+    <!-- メインレイアウト -->
+    <div class="app-container">
+        
+        <!-- ヘッダー -->
+        <header class="top-header">
+            <div class="title-group">
+                <span class="decoration">🎄</span>
+                <!-- タイトル変更箇所 -->
+                <h1>AIJP YEAR-END PARTY <span class="gold-text">GOLDEN 10</span></h1>
+                <span class="decoration">🎄</span>
+            </div>
+            <button id="resetAllButton" class="btn-reset">⚙ RESET</button>
+        </header>
+
+        <!-- コンテンツエリア -->
+        <div class="content-grid">
+            
+            <!-- 左側: ゲームパネル -->
+            <section class="game-panel">
+                <div class="panel-inner">
+                    <div class="input-group">
+                        <label>CHALLENGER</label>
+                        <input type="text" id="playerName" placeholder="お名前を入力" autocomplete="off">
+                    </div>
+
+                    <div class="timer-wrapper">
+                        <div class="timer-label">TARGET: 10.00s</div>
+                        <div id="timerText" class="main-timer">00.00</div>
+                        <div id="diffText" class="diff-display">READY?</div>
+                    </div>
+
+                    <div class="message-area">
+                        <span id="resultMessage">PRESS START</span>
+                    </div>
+
+                    <div class="controls">
+                        <button id="gameButton" class="btn-primary">START</button>
+                        <button id="retryButton" class="btn-secondary hidden">NEXT CHALLENGER ➡</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 右側: ランキングパネル -->
+            <section class="ranking-panel">
+                <div class="ranking-header">
+                    <h2>🏆 HALL OF FAME 🏆</h2>
+                    <div class="table-head">
+                        <span class="col-rank">Rank</span>
+                        <span class="col-name">Name</span>
+                        <span class="col-time">Time</span>
+                        <span class="col-diff">Diff</span>
+                    </div>
+                </div>
+                
+                <div class="ranking-scroll-area">
+                    <div id="rankingBody" class="ranking-list">
+                        <!-- JSで生成 -->
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- 演出用オーバーレイ -->
+    <div id="flash-overlay"></div>
+    <div id="particles-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
