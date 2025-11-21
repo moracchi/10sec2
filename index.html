@@ -6,33 +6,32 @@
     <title>AIJP YEAR-END PARTY - GOLDEN 10</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@700;900&family=Noto+Sans+JP:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 背景: 雪のエフェクト -->
+    <!-- 背景エフェクト -->
     <div id="snow-container"></div>
     <div class="vignette"></div>
 
-    <!-- メインレイアウト -->
+    <!-- メインコンテナ -->
     <div class="app-container">
         
         <!-- ヘッダー -->
         <header class="top-header">
             <div class="title-group">
                 <span class="decoration">🎄</span>
-                <!-- タイトル変更箇所 -->
                 <h1>AIJP YEAR-END PARTY <span class="gold-text">GOLDEN 10</span></h1>
                 <span class="decoration">🎄</span>
             </div>
             <button id="resetAllButton" class="btn-reset">⚙ RESET</button>
         </header>
 
-        <!-- コンテンツエリア -->
+        <!-- コンテンツエリア（左右分割） -->
         <div class="content-grid">
             
-            <!-- 左側: ゲームパネル -->
+            <!-- 左：ゲーム操作パネル -->
             <section class="game-panel">
                 <div class="panel-inner">
                     <div class="input-group">
@@ -57,7 +56,7 @@
                 </div>
             </section>
 
-            <!-- 右側: ランキングパネル -->
+            <!-- 右：ランキングパネル -->
             <section class="ranking-panel">
                 <div class="ranking-header">
                     <h2>🏆 HALL OF FAME 🏆</h2>
@@ -79,9 +78,18 @@
         </div>
     </div>
 
-    <!-- 演出用オーバーレイ -->
+    <!-- 演出用レイヤー -->
     <div id="flash-overlay"></div>
     <div id="particles-container"></div>
+    
+    <!-- ランクイン割り込み演出オーバーレイ -->
+    <div id="rank-interruption" class="hidden">
+        <div class="interruption-content">
+            <div class="interruption-label">NEW RECORD</div>
+            <div class="interruption-rank" id="interruption-rank-text">RANK 1</div>
+            <div class="interruption-name" id="interruption-name-text">PLAYER NAME</div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -1,402 +1,202 @@
 /* ========================================
-   Luxury Christmas Theme
+   Luxury Christmas Theme (High Impact Ver.)
    ======================================== */
 :root {
-    --bg-dark: #0a1a12;
-    --bg-panel: rgba(20, 40, 30, 0.7);
+    --bg-dark: #050a07;
+    --bg-panel: rgba(10, 20, 15, 0.85);
     --gold-primary: #d4af37;
-    --gold-shine: #f9e5a0;
+    --gold-shine: #fff5cc;
     --red-velvet: #8a0000;
-    --red-bright: #ff1a1a;
-    --text-white: #f0f0f0;
+    --red-bright: #ff0033;
+    --text-white: #ffffff;
     
     --font-title: 'Cinzel', serif;
     --font-digit: 'Orbitron', sans-serif;
     --font-body: 'Noto Sans JP', sans-serif;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: var(--font-body);
-    background: radial-gradient(circle at center, #1a2e22 0%, #050a07 100%);
+    background: radial-gradient(circle at center, #1a2e22 0%, #000000 100%);
     color: var(--text-white);
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    position: relative;
+    height: 100vh; width: 100vw;
+    overflow: hidden; position: relative;
 }
 
 .vignette {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
-    pointer-events: none;
-    z-index: 1;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    box-shadow: inset 0 0 200px rgba(0,0,0,1);
+    pointer-events: none; z-index: 1;
 }
-
 #snow-container {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 0;
-    pointer-events: none;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none; opacity: 0.3;
 }
 
-/* ========================================
-   Layout & Header
-   ======================================== */
+/* Layout */
 .app-container {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    position: relative; z-index: 10;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
     padding: 1rem 2rem;
 }
 
 .top-header {
-    height: 10vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--gold-primary);
-    margin-bottom: 1rem;
+    height: 10vh; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid var(--gold-primary); margin-bottom: 1rem;
+    background: rgba(0,0,0,0.5);
 }
-
-.title-group {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
+.title-group { display: flex; align-items: center; gap: 1rem; }
 .title-group h1 {
-    font-family: var(--font-title);
-    font-size: 2.2rem; /* タイトルが長くなったので少し調整 */
-    letter-spacing: 0.05em;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    font-family: var(--font-title); font-size: 2.2rem;
+    letter-spacing: 0.05em; text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
 }
-
-.gold-text {
-    color: var(--gold-primary);
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
-
+.gold-text { color: var(--gold-primary); text-shadow: 0 0 15px rgba(212, 175, 55, 0.8); }
 .decoration { font-size: 2rem; }
-
 .btn-reset {
-    background: transparent;
-    border: 1px solid #444;
-    color: #888;
-    padding: 5px 15px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: 0.3s;
+    background: transparent; border: 1px solid #444; color: #666;
+    padding: 5px 15px; cursor: pointer; transition: 0.3s;
 }
-.btn-reset:hover {
-    color: var(--red-bright);
-    border-color: var(--red-bright);
-}
+.btn-reset:hover { color: var(--red-bright); border-color: var(--red-bright); }
 
-/* ========================================
-   Grid & Panels
-   ======================================== */
+/* Content Grid */
 .content-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 45% 55%;
-    gap: 2rem;
-    height: 85vh;
+    flex: 1; display: grid; grid-template-columns: 40% 60%; gap: 2rem; height: 85vh;
 }
 
-/* Left Panel */
+/* Game Panel */
 .game-panel {
-    background: var(--bg-panel);
-    border: 1px solid var(--gold-primary);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
+    background: var(--bg-panel); border: 1px solid var(--gold-primary);
+    border-radius: 10px; display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 }
-
-.panel-inner {
-    width: 80%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-.input-group label {
-    color: var(--gold-primary);
-    font-family: var(--font-title);
-    letter-spacing: 2px;
-}
-
+.panel-inner { width: 85%; text-align: center; display: flex; flex-direction: column; gap: 1.5rem; }
+.input-group label { color: var(--gold-primary); font-family: var(--font-title); letter-spacing: 2px; }
 #playerName {
-    background: rgba(0,0,0,0.3);
-    border: 2px solid #333;
-    border-bottom: 2px solid var(--gold-primary);
-    color: #fff;
-    font-size: 1.8rem;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    outline: none;
-}
-#playerName:focus {
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(0,0,0,0.5); border: 2px solid #333; border-bottom: 2px solid var(--gold-primary);
+    color: #fff; font-size: 2rem; padding: 10px; text-align: center; width: 100%;
+    border-radius: 5px; outline: none; font-weight: bold;
 }
 
 .timer-wrapper {
-    background: rgba(0,0,0,0.4);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1); box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 }
-
-.timer-label {
-    color: #888;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-}
-
+.timer-label { color: #888; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 5px; }
 .main-timer {
-    font-family: var(--font-digit);
-    font-size: 6rem;
-    color: var(--text-white);
-    line-height: 1;
-    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+    font-family: var(--font-digit); font-size: 6.5rem; color: var(--text-white);
+    line-height: 1; text-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
+.timer-blur { filter: blur(30px); transform: scale(0.95); opacity: 0.5; transition: 0.5s; }
+.diff-display { font-family: var(--font-digit); color: var(--gold-primary); font-size: 1.8rem; height: 2.5rem; }
+.message-area { height: 2rem; font-weight: 900; font-size: 1.3rem; color: #aaa; text-transform: uppercase; }
 
-.timer-blur {
-    filter: blur(20px);
-    transform: scale(0.9);
-    opacity: 0.7;
-    transition: 0.5s;
-}
-
-.diff-display {
-    font-family: var(--font-digit);
-    color: var(--gold-primary);
-    font-size: 1.5rem;
-    height: 2rem;
-}
-
-.message-area {
-    height: 2rem;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #aaa;
-}
-
-.controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
+/* Controls */
+.controls { display: flex; justify-content: center; gap: 1rem; }
 .btn-primary {
-    background: linear-gradient(135deg, var(--gold-primary) 0%, #b8860b 100%);
-    color: #000;
-    font-family: var(--font-title);
-    font-weight: 900;
-    font-size: 2rem;
-    padding: 15px 60px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-    transition: transform 0.1s, box-shadow 0.1s;
+    background: linear-gradient(135deg, var(--gold-primary) 0%, #8a6d0b 100%);
+    color: #000; font-family: var(--font-title); font-weight: 900; font-size: 2.2rem;
+    padding: 15px 50px; border: none; border-radius: 5px; cursor: pointer;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); transition: 0.1s;
+    text-transform: uppercase;
 }
-.btn-primary:active { transform: scale(0.98); }
-
+.btn-primary:active { transform: scale(0.95); }
 .stop-mode {
-    background: linear-gradient(135deg, var(--red-bright) 0%, var(--red-velvet) 100%);
-    color: white;
-    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
-    animation: pulse 1s infinite;
+    background: linear-gradient(135deg, #ff3333 0%, #990000 100%);
+    color: white; box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+    animation: aggressivePulse 0.5s infinite alternate;
 }
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-    70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-}
-
 .btn-secondary {
-    background: transparent;
-    border: 2px solid var(--gold-primary);
-    color: var(--gold-primary);
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
+    background: transparent; border: 2px solid var(--gold-primary); color: var(--gold-primary);
+    padding: 10px 20px; border-radius: 30px; font-weight: bold; cursor: pointer;
 }
-.btn-secondary:hover {
-    background: var(--gold-primary);
-    color: #000;
-}
+.btn-secondary:hover { background: var(--gold-primary); color: #000; }
+.hidden { display: none !important; }
 
-.hidden { display: none; }
-
-/* ========================================
-   Right Panel: Ranking & Animation
-   ======================================== */
+/* Ranking Panel */
 .ranking-panel {
-    background: rgba(0,0,0,0.5);
-    border-top: 5px solid var(--red-velvet);
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    overflow: hidden;
+    background: rgba(0,0,0,0.6); border-top: 4px solid var(--red-velvet);
+    display: flex; flex-direction: column; border-radius: 10px; overflow: hidden;
 }
-
 .ranking-header {
-    padding: 1rem 1.5rem;
-    background: rgba(138, 0, 0, 0.3);
+    padding: 1rem 1.5rem; background: rgba(50, 0, 0, 0.5);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
 .ranking-header h2 {
-    color: var(--gold-primary);
-    text-align: center;
-    margin-bottom: 1rem;
-    font-family: var(--font-title);
-    font-size: 1.5rem;
+    color: var(--gold-primary); text-align: center; margin-bottom: 0.5rem;
+    font-family: var(--font-title); font-size: 1.8rem;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
-
 .table-head {
-    display: grid;
-    grid-template-columns: 0.8fr 3fr 1.5fr 1.5fr;
-    font-weight: bold;
-    color: #aaa;
-    font-size: 0.9rem;
-    padding: 0 10px;
+    display: grid; grid-template-columns: 0.8fr 3fr 1.5fr 1.5fr;
+    font-weight: bold; color: #888; font-size: 0.9rem; padding: 0 10px;
 }
-
-.ranking-scroll-area {
-    flex: 1;
-    overflow-y: auto;
-    padding: 0.5rem;
-    position: relative; /* アニメーション用 */
-}
-
-.ranking-scroll-area::-webkit-scrollbar { width: 8px; }
-.ranking-scroll-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
-.ranking-scroll-area::-webkit-scrollbar-thumb { background: var(--gold-primary); border-radius: 4px; }
+.ranking-scroll-area { flex: 1; overflow-y: auto; padding: 0.5rem; }
+.ranking-scroll-area::-webkit-scrollbar { width: 6px; }
+.ranking-scroll-area::-webkit-scrollbar-thumb { background: var(--gold-primary); }
 
 .ranking-row {
-    display: grid;
-    grid-template-columns: 0.8fr 3fr 1.5fr 1.5fr;
-    align-items: center;
-    padding: 15px 10px;
-    margin-bottom: 8px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 5px;
-    font-family: var(--font-digit);
-    font-size: 1.2rem;
-    transition: all 0.5s ease; /* スムーズな移動のために時間を確保 */
-    border-left: 4px solid transparent;
-    position: relative; /* z-index用 */
+    display: grid; grid-template-columns: 0.8fr 3fr 1.5fr 1.5fr;
+    align-items: center; padding: 15px 10px; margin-bottom: 8px;
+    background: rgba(255,255,255,0.03); border-radius: 4px;
+    font-family: var(--font-digit); font-size: 1.4rem;
+    border-left: 4px solid transparent; transition: transform 0.3s;
 }
-
-/* 新規挿入時のアニメーション */
-.ranking-row.just-added {
-    animation: slideInAndFlash 1.5s ease-out;
-    z-index: 10;
-    background: rgba(212, 175, 55, 0.3); /* 一瞬ゴールドに */
-    border: 1px solid var(--gold-primary);
-}
-
-@keyframes slideInAndFlash {
-    0% { opacity: 0; transform: translateX(-50px); background: white; }
-    20% { opacity: 1; transform: translateX(0); background: white; }
-    100% { background: rgba(255,255,255,0.05); } /* 通常色に戻る */
-}
-
 .rank-1 {
-    background: linear-gradient(90deg, rgba(212, 175, 55, 0.4), rgba(0,0,0,0));
-    border-left-color: var(--gold-primary);
-    color: var(--gold-shine);
-    font-weight: 900;
-    margin-bottom: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    /* 1位は常に少し目立つ */
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.5), transparent);
+    border-left: 4px solid var(--gold-primary);
+    color: var(--gold-shine); font-weight: 900; font-size: 1.6rem;
+    border-top: 1px solid rgba(255,215,0,0.3); border-bottom: 1px solid rgba(255,215,0,0.3);
 }
-.rank-2 {
-    border-left-color: #c0c0c0;
-    background: linear-gradient(90deg, rgba(192, 192, 192, 0.2), rgba(0,0,0,0));
-}
-.rank-3 {
-    border-left-color: #cd7f32;
-    background: linear-gradient(90deg, rgba(205, 127, 50, 0.2), rgba(0,0,0,0));
-}
+.rank-2 { border-left-color: #c0c0c0; background: linear-gradient(90deg, rgba(192,192,192,0.3), transparent); color: #eee; }
+.rank-3 { border-left-color: #cd7f32; background: linear-gradient(90deg, rgba(205,127,50,0.3), transparent); color: #ffcc99; }
 
-.rank-num { font-family: var(--font-title); }
-
-/* 心音アニメーション */
-.heartbeat-mode .main-timer {
-    animation: textHeartbeat 0.8s infinite;
-    color: var(--red-bright);
+/* Rank Interruption Overlay */
+#rank-interruption {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 999;
+    display: flex; justify-content: center; align-items: center;
+    backdrop-filter: blur(10px); animation: flashBang 0.2s ease-out;
 }
-@keyframes textHeartbeat {
-    0% { transform: scale(1); text-shadow: 0 0 10px red; }
-    50% { transform: scale(1.1); text-shadow: 0 0 30px red; }
-    100% { transform: scale(1); text-shadow: 0 0 10px red; }
+.interruption-content {
+    text-align: center; transform: scale(0.8);
+    animation: zoomInShake 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+.interruption-label {
+    font-family: var(--font-digit); font-size: 3rem; color: var(--red-bright);
+    text-shadow: 0 0 20px var(--red-bright); letter-spacing: 5px; margin-bottom: 1rem;
+}
+.interruption-rank {
+    font-family: var(--font-title); font-size: 8rem; font-weight: 900;
+    color: var(--gold-primary); text-shadow: 0 0 50px var(--gold-primary);
+    line-height: 1; margin-bottom: 1rem; animation: textStrobe 0.1s infinite;
+}
+.interruption-name { font-family: var(--font-body); font-size: 3rem; color: white; font-weight: bold; }
 
-/* オーバーレイ系 */
+/* Animations */
+@keyframes aggressivePulse {
+    from { box-shadow: 0 0 10px red; transform: scale(1); }
+    to { box-shadow: 0 0 40px red; transform: scale(1.05); }
+}
+@keyframes textStrobe { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
+@keyframes zoomInShake {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+    80% { transform: scale(0.95) rotate(-2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes flashBang { 0% { background: #fff; } 100% { background: rgba(0,0,0,0.95); } }
+
+.heartbeat-mode .app-container { animation: screenShake 0.1s infinite; }
+@keyframes screenShake { 0% { transform: translate(1px, 1px); } 100% { transform: translate(-1px, -1px); } }
+
 #flash-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #fff;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 100;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #fff; opacity: 0; pointer-events: none; z-index: 2000;
     transition: opacity 0.1s;
 }
-
-.particle {
-    position: absolute;
-    pointer-events: none;
-    border-radius: 50%;
-}
-
-.snowflake {
-    position: absolute;
-    color: #fff;
-    font-size: 1em;
-    font-family: Arial;
-    text-shadow: 0 0 1px #000;
-    animation-name: snowflakes-fall, snowflakes-shake;
-    animation-duration: 10s, 3s;
-    animation-timing-function: linear, ease-in-out;
-    animation-iteration-count: infinite, infinite;
-    z-index: 0;
-    opacity: 0.5;
-}
-@keyframes snowflakes-fall {
-    0% { top: -10% }
-    100% { top: 100% }
-}
-@keyframes snowflakes-shake {
-    0% { transform: translateX(0px) }
-    50% { transform: translateX(80px) }
-    100% { transform: translateX(0px) }
-}
+.particle { position: absolute; pointer-events: none; border-radius: 50%; }
+.snowflake { position: absolute; color: #fff; opacity: 0.3; z-index: 0; }
