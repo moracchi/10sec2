@@ -1,48 +1,51 @@
+<!-- file: index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIJP YEAR-END PARTY - GOLDEN 10</title>
+    <title>10.00s CHALLENGE - 昭島国際法務PFI忘年会</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@700;900&family=Noto+Sans+JP:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Sans+JP:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- 背景エフェクト -->
-    <div id="snow-container"></div>
     <div class="vignette"></div>
+    <div id="snow-container"></div>
+    <div id="particles-container"></div>
 
-    <!-- メインコンテナ -->
     <div class="app-container">
-        
-        <!-- ヘッダー -->
+        <!-- Header -->
         <header class="top-header">
             <div class="title-group">
-                <span class="decoration">🎄</span>
-                <h1>AIJP YEAR-END PARTY <span class="gold-text">GOLDEN 10</span></h1>
-                <span class="decoration">🎄</span>
+                <!-- イベント名追加 -->
+                <div class="event-name">昭島国際法務PFI忘年会</div>
+                <h1>TEN <span class="gold-text">PERFECT</span></h1>
             </div>
-            <button id="resetAllButton" class="btn-reset">⚙ RESET</button>
+            <div class="header-controls">
+                <button id="showRankingButton" class="btn-ranking-trigger">🏆 RANKING REVEAL</button>
+                <button id="resetAllButton" class="btn-reset" title="データ全消去">⚠️ RESET</button>
+            </div>
         </header>
 
-        <!-- コンテンツエリア（左右分割） -->
+        <!-- Main Content Grid -->
         <div class="content-grid">
-            
-            <!-- 左：ゲーム操作パネル -->
-            <section class="game-panel">
+            <!-- Left: Game Panel (Main) -->
+            <div class="game-panel">
                 <div class="panel-inner">
                     <div class="input-group">
-                        <label>CHALLENGER</label>
-                        <input type="text" id="playerName" placeholder="お名前を入力" autocomplete="off">
+                        <label>PLAYER NAME</label>
+                        <input type="text" id="playerName" placeholder="ENTER NAME" maxlength="10" autocomplete="off">
                     </div>
 
                     <div class="timer-wrapper">
-                        <div class="timer-label">TARGET: 10.00s</div>
+                        <div class="timer-label">TIME RECORD</div>
                         <div id="timerText" class="main-timer">00.00</div>
-                        <div id="diffText" class="diff-display">READY?</div>
+                        <div id="diffText" class="diff-display">TARGET: 10.00</div>
                     </div>
 
                     <div class="message-area">
@@ -50,45 +53,70 @@
                     </div>
 
                     <div class="controls">
-                        <button id="gameButton" class="btn-primary">START</button>
-                        <button id="retryButton" class="btn-secondary hidden">NEXT CHALLENGER ➡</button>
+                        <button id="gameButton" class="btn-primary" data-state="start">START</button>
+                        <button id="retryButton" class="btn-secondary hidden">RETRY</button>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- 右：ランキングパネル -->
-            <section class="ranking-panel">
-                <div class="ranking-header">
-                    <h2>🏆 HALL OF FAME 🏆</h2>
-                    <div class="table-head">
-                        <span class="col-rank">Rank</span>
-                        <span class="col-name">Name</span>
-                        <span class="col-time">Time</span>
-                        <span class="col-diff">Diff</span>
+            <!-- Right: Rules Panel (説明表示) -->
+            <div class="rules-panel">
+                <div class="rules-content">
+                    <h2>📜 RULE</h2>
+                    <ul class="rule-list">
+                        <li>
+                            <span class="icon">🎯</span>
+                            <div class="text">
+                                <strong>10.00秒</strong> ジャストで止めろ
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">☠️</span>
+                            <div class="text">
+                                <!-- 改行を入れてインパクトを強化 -->
+                                <strong>10.00秒を超えたら<br>即・失・格</strong>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">🏆</span>
+                            <div class="text">
+                                <strong>10秒以内</strong>で最も近い者が勝者<br>
+                                <span class="sub-text">豪華景品をゲットせよ！</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="status-monitor">
+                        <p>CURRENT ENTRIES: <span id="entryCount">0</span></p>
+                        <p>TOP SCORE: <span id="topScoreDisplay">--.--</span></p>
                     </div>
                 </div>
-                
-                <div class="ranking-scroll-area">
-                    <div id="rankingBody" class="ranking-list">
-                        <!-- JSで生成 -->
-                    </div>
-                </div>
-            </section>
-
+            </div>
         </div>
     </div>
 
-    <!-- 演出用レイヤー -->
-    <div id="flash-overlay"></div>
-    <div id="particles-container"></div>
-    
-    <!-- ランクイン割り込み演出オーバーレイ -->
-    <div id="rank-interruption" class="hidden">
-        <div class="interruption-content">
-            <div class="interruption-label">NEW RECORD</div>
-            <div class="interruption-rank" id="interruption-rank-text">RANK 1</div>
-            <div class="interruption-name" id="interruption-name-text">PLAYER NAME</div>
+    <!-- Ranking Modal (Overlay) -->
+    <div id="rankingModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏆 FINAL RANKING 🏆</h2>
+                <button id="closeModal" class="btn-close">×</button>
+            </div>
+            <!-- ランキング表示エリア -->
+            <div class="ranking-stage">
+                <div id="rankingList" class="ranking-list">
+                    <!-- JSで動的に生成 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="event-footer-text">昭島国際法務PFI忘年会 SPECIAL MATCH</p>
+            </div>
         </div>
+    </div>
+
+    <!-- Effects Overlay -->
+    <div id="flash-overlay"></div>
+    <div id="dq-overlay" class="hidden">
+        <div class="dq-text">DISQUALIFIED</div>
     </div>
 
     <script src="script.js"></script>
